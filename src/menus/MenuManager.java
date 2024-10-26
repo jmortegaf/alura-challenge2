@@ -1,6 +1,7 @@
 package menus;
 
 import api.request.APIRequests;
+import models.Bookmark;
 import models.CurrencyList;
 
 public class MenuManager {
@@ -19,11 +20,16 @@ public class MenuManager {
 
     public void run(CurrencyList currency_list, APIRequests api_request){
         String user_input;
+        Bookmark bookmark;
         while (true){
             user_input = main_menu.show_menu();
             if(user_input.equalsIgnoreCase("q"))break;
-            else if(user_input.equalsIgnoreCase("b"))
-                bookmarks_menu.show_menu();
+            else if(user_input.equalsIgnoreCase("b")){
+                bookmark=bookmarks_menu.show_menu();
+                if(bookmark.is_valid()) {
+                    exchange_currency_menu.exchange_from_bookmark(bookmark,api_request);
+                }
+            }
             else if(user_input.equalsIgnoreCase("e"))
                 user_input=exchange_currency_menu.show_menu(currency_list,api_request);
             else if(user_input.equalsIgnoreCase("h"))

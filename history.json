@@ -33,5 +33,12 @@
     "exchange_rate": 252.0125,
     "exchange_amount": 1000.0,
     "exchange_date": "2024/10/26 09:48:17"
+  },
+  {
+    "base_currency": "PEN",
+    "target_currency": "CLP",
+    "exchange_rate": 252.0125,
+    "exchange_amount": 250.0,
+    "exchange_date": "2024/10/26 10:15:25"
   }
 ]

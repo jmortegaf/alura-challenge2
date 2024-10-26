@@ -1,12 +1,13 @@
 package menus;
 
+import models.Bookmark;
 import models.Bookmarks;
 
 import java.util.Scanner;
 
 public class BookmarksMenu {
 
-    public void show_menu() {
+    public Bookmark show_menu() {
         Bookmarks bookmarks=new Bookmarks("bookmarks.json");
 
         int page=0;
@@ -51,12 +52,16 @@ public class BookmarksMenu {
             else{
                 try{
                     int user_selection=Integer.parseInt(user_input);
-                    if(user_selection>max_value || user_selection<0)
+                    if(user_selection>max_value || user_selection<=0)
                         System.out.println("Invalid selection.");
+                    else{
+                        return new Bookmark(bookmarks.get_bookmark((page*5)+(user_selection-1)));
+                    }
                 }catch (NumberFormatException e){
                     System.out.println("Invalid selection.");
                 }
             }
         }
+        return new Bookmark("","");
     }
 }

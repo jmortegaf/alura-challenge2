@@ -152,5 +152,63 @@ public class ExchangeCurrencyMenu {
         return new SearchCurrencyResult(false,"","");
     }
 
+    public void exchange_from_bookmark(Bookmark bookmark,APIRequests api_request){
+        Scanner scanner=new Scanner(System.in);
+        String user_input;
+        String base_currency=bookmark.get_base_currency();
+        String target_currency= bookmark.get_target_currency();
+        double conversion_rate=0;
+        String s_conversion_rate="";
+
+        History history=new History("history.json");
+
+        try {
+            String json=api_request.request("latest",base_currency);
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_DASHES)
+                    .setPrettyPrinting()
+                    .create();
+            ExchangerateExchange exchangerate_exchange=gson.fromJson(json,ExchangerateExchange.class);
+            conversion_rate=exchangerate_exchange.conversion_rates().get(target_currency);
+            s_conversion_rate= String.valueOf(conversion_rate);
+        } catch (IOException | InterruptedException e) {
+            System.out.println("Error fetching data from API");
+        }
+
+        while (true){
+            System.out.println("====================================================================");
+            System.out.println("[E]xchange/[R]eturn");
+            System.out.println("Base Currency: "+base_currency+" / Target Currency: "+target_currency+" @ "+s_conversion_rate);
+            System.out.println("====================================================================");
+            System.out.print(":>");
+            user_input=scanner.nextLine();
+            if(user_input.equalsIgnoreCase("r"))break;
+            else if(user_input.equalsIgnoreCase("e")){
+                System.out.print("Amount:>");
+                user_input=scanner.nextLine();
+                try{
+                    DecimalFormatSymbols symbols=new DecimalFormatSymbols(Locale.getDefault());
+                    symbols.setDecimalSeparator('.');
+                    DecimalFormat df=new DecimalFormat("#0.00",symbols);
+
+                    double amount=Double.parseDouble(user_input);
+                    if(amount>0){
+                        System.out.println(amount+" "+base_currency+" > "+
+                                df.format(amount*conversion_rate)+
+                                " "+target_currency+" @ "+conversion_rate);
+
+                        Exchange exchange=new Exchange(base_currency,target_currency,conversion_rate,amount);
+                        history.add(exchange);
+                        history.save_history();
+                    }
+                    else System.out.println("Invalid amount.");
+
+                }catch (NumberFormatException e){
+                    System.out.println("Invalid amount.");
+                }
+            }
+        }
+
+    }
 
 }
