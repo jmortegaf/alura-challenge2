@@ -34,10 +34,6 @@ public class CurrencyList {
         return this.list.size();
     }
 
-    public List<String[]> get_list() {
-        return list;
-    }
-
     public String get_currency_id(int index){
         return list.get(index)[0];
     }

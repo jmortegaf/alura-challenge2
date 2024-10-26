@@ -1,8 +1,5 @@
 package models;
 
-import api.request.APIRequests;
-import menus.BookmarksMenu;
-
 public class Bookmark {
 
     private String base_currency;

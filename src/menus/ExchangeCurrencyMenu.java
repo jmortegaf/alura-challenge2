@@ -27,10 +27,10 @@ public class ExchangeCurrencyMenu {
         History history=new History("history.json");
 
         while (true){
-            System.out.println("================================================");
+            System.out.println("==========================================================");
             System.out.println("[F]ind/[M]odify Selections/[E]xchange/[R]eturn");
             System.out.println("Base Currency: "+base_currency+" / Target Currency: "+target_currency+" @ "+s_conversion_rate);
-            System.out.println("================================================");
+            System.out.println("==========================================================");
             System.out.print(":>");
             user_input=scanner.nextLine();
             if(user_input.equalsIgnoreCase("r"))break;
@@ -99,10 +99,10 @@ public class ExchangeCurrencyMenu {
 
         while(true) {
             int max_value=page!=pages-1?5:currencyList.size()-(5*(page));
-            System.out.println("=============================================");
+            System.out.println("==========================================================");
             System.out.println("[S]elect/[N]ext page/[P]revious page/[R]eturn");
             System.out.println("Page "+(page+1)+"/"+pages);
-            System.out.println("=============================================");
+            System.out.println("==========================================================");
 
             for (int i = 0; i < max_value; i++)
                 System.out.println("[" + (i + 1) + "] " + currencyList.get_currency((page*5) + i));
