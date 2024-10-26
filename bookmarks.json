@@ -2,5 +2,9 @@
   {
     "base_currency": "PEN",
     "target_currency": "CLP"
+  },
+  {
+    "base_currency": "USD",
+    "target_currency": "CLP"
   }
 ]

@@ -35,7 +35,6 @@ public class BookmarksMenu {
             System.out.println("[N]ext page/[P]revious page/[R]eturn:");
             System.out.println("Page "+(page+1)+"/"+pages);
             System.out.println("====================================================================");
-            System.out.println(max_value);
             for (int i = 0; i < max_value; i++)
                 System.out.println("[" + (i + 1) + "] " + bookmarks.get_bookmark((page*5) + i).toString());
             System.out.print(":>");
