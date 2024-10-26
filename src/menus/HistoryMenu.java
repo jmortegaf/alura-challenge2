@@ -13,11 +13,11 @@ public class HistoryMenu {
 
         while (true){
             int max_value=page!=pages-1?5:history.size()-(5*(page));
-            System.out.println("==========================================================");
+            System.out.println("====================================================================");
             System.out.println("Exchange History");
             System.out.println("Page "+(page+1)+"/"+pages);
             System.out.println("[N]ext page/[P]revious page/[R]eturn");
-            System.out.println("==========================================================");
+            System.out.println("====================================================================");
             for (int i = 0; i < max_value; i++)
                 System.out.println(history.get_exchange((page*5) + i).toString());
             System.out.print(":>");

@@ -42,7 +42,15 @@ public class Bookmarks {
     public void add(Bookmark bookmark){
         if(bookmarks==null)
             bookmarks=new ArrayList<>();
-        bookmarks.add(bookmark);
+        boolean duplicated=false;
+        for(Bookmark _bookmark:bookmarks){
+            if(_bookmark.equals(bookmark)){
+                duplicated=true;
+                break;
+            }
+        }
+        if(!duplicated)
+            bookmarks.add(bookmark);
     }
     public Bookmark get_bookmark(int index){
         return bookmarks.get(index);
