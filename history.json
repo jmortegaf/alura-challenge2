@@ -1,0 +1,23 @@
+[
+  {
+    "base_currency": "USD",
+    "target_currency": "CNY",
+    "exchange_rate": 7.1265,
+    "exchange_amount": 100.0,
+    "exchange_date": "2024/10/26 00:14:15"
+  },
+  {
+    "base_currency": "USD",
+    "target_currency": "CLP",
+    "exchange_rate": 946.3311,
+    "exchange_amount": 100.0,
+    "exchange_date": "2024/10/26 00:14:59"
+  },
+  {
+    "base_currency": "CNY",
+    "target_currency": "PEN",
+    "exchange_rate": 0.5277,
+    "exchange_amount": 1000.0,
+    "exchange_date": "2024/10/26 00:26:11"
+  }
+]
