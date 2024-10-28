@@ -30,11 +30,21 @@ public class History {
             Type history=new TypeToken<List<Exchange>>(){}.getType();
             exchange_history=gson.fromJson(reader,history);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            FileWriter output= null;
+            try {
+                List<Exchange> empty_history=new ArrayList<>();
+                output = new FileWriter("histtory.json");
+                output.write(gson.toJson(empty_history));
+                output.close();
+            } catch (IOException e2) {
+                throw new RuntimeException(e);
+            }
         }
     }
     public int size(){
-        return exchange_history.size();
+        if(exchange_history!=null)
+            return exchange_history.size();
+        return  0;
     }
 
     public void add(Exchange exchange){

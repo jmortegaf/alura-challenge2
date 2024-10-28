@@ -10,9 +10,25 @@ public class HistoryMenu {
         History history=new History("history.json");
         int page=0;
         int pages=(int)Math.ceil(history.size()/5.0);
+        String user_input;
 
         while (true){
             int max_value=page!=pages-1?5:history.size()-(5*(page));
+            Scanner scanner = new Scanner(System.in);
+
+            if(pages==0){
+                System.out.println("====================================================================");
+                System.out.println("There's no exchange history/[R]eturn");
+                System.out.println("====================================================================");
+                System.out.print(":>");
+                user_input= scanner.nextLine();
+                if(user_input.equalsIgnoreCase("r"))break;
+                else{
+                    System.out.println("Invalid selection.");
+
+                    continue;
+                }
+            }
             System.out.println("====================================================================");
             System.out.println("Exchange History");
             System.out.println("Page "+(page+1)+"/"+pages);
@@ -21,8 +37,7 @@ public class HistoryMenu {
             for (int i = 0; i < max_value; i++)
                 System.out.println(history.get_exchange((page*5) + i).toString());
             System.out.print(":>");
-            Scanner scanner = new Scanner(System.in);
-            String user_input = scanner.nextLine();
+            user_input = scanner.nextLine();
             if (user_input.equalsIgnoreCase("r")) break;
             else if(user_input.equalsIgnoreCase("n")){
                 page++;

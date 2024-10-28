@@ -30,7 +30,15 @@ public class Bookmarks {
             Type BOOKMARKS=new TypeToken<List<Bookmark>>(){}.getType();
             bookmarks=gson.fromJson(reader,BOOKMARKS);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            FileWriter output= null;
+            try {
+                List<Bookmarks> empty_bookmarks=new ArrayList<>();
+                output = new FileWriter("bookmarks.json");
+                output.write(gson.toJson(empty_bookmarks));
+                output.close();
+            } catch (IOException e2) {
+                throw new RuntimeException(e2);
+            }
         }
     }
     public int size(){
