@@ -2,7 +2,9 @@
 # Alura Currency Exchange 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 
-Simple java console app for currency exchange
+Simple java console app for currency exchange.
+
+This project is part of the Alura One Next Education program.
 
 ## Dependencies
 
