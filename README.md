@@ -44,4 +44,39 @@ cd out
 java -cp ".;..;../modules/*"  main.Main
 ```
 
-### Usage
+## Usage
+
+### Main Menu
+Once you run the program you're presented with the main menu
+
+![application main menu](images/main_menu.png)
+
+### Bookmark Menu
+The bookmarks menu show every conversion bookmark saved by the user,
+from there you can make an exchange directly by pressing e
+
+![bookmarks menu](images/bookmark_menu.png)
+
+### Exchange Menu
+In the exchange menu you can find a currency by entering f and then
+searching a currency, for example if you enter unit, it returns all
+currencies that contain the string unit, in this case United States Dollar,
+then you select the currency by its index, and finally select it as base or 
+target currency.
+
+![bookmarks menu](images/exchange_menu1.png)
+
+Then you do the same process for the target currency.
+
+![bookmarks menu](images/exchange_menu2.png)
+
+Finally, you make the exchange and input the amount
+
+![bookmarks menu](images/exchange_menu3.png)
+
+### History Menu
+The history menu shows all the previous exchanges made by the user.
+
+![bookmarks menu](images/history_menu.png)
+ 
+
